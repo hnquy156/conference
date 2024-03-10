@@ -1,11 +1,17 @@
 const { CronJob } = require('cron');
 const Scraper = require('../utils/scraper');
+const { updateChangedConference } = require('../services/conference');
 
 const initCronJob = () => {
   try {
-    const job = new CronJob('* * * * *', async () => {
+    const CRON_PATTERN = '* * * * *'; // every minute
+    const job = new CronJob(CRON_PATTERN, async () => {
       const conferences = await Scraper.getConferences();
-      console.log('🚀  conferences:', conferences);
+      conferences.forEach((conf) => {
+        updateChangedConference(conf).catch((error) => {
+          console.error('updateChangedConference', error.message);
+        });
+      });
     });
 
     job.start();
