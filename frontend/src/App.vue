@@ -16,8 +16,8 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-  header {
-    max-height: 64px;
-    font-size: 20px;
-  }
+header {
+  max-height: 64px;
+  font-size: 20px;
+}
 </style>
