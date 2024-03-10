@@ -14,6 +14,14 @@ app.use(express.json());
 
 app.use('/api/', require('./routes'));
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.json({
+    status: false,
+    error: err.message,
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log('App is listening on port', PORT);

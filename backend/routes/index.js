@@ -6,5 +6,6 @@ router.get('/', (req, res) => {
     data: 'Hello, world!',
   });
 });
+router.use('/conferences', require('./conference'));
 
 module.exports = router;

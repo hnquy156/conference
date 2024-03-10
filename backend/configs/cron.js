@@ -3,7 +3,7 @@ const Scraper = require('../utils/scraper');
 
 const initCronJob = () => {
   try {
-    const job = new CronJob('*/10 * * * * *', async () => {
+    const job = new CronJob('* * * * *', async () => {
       const conferences = await Scraper.getConferences();
       console.log('🚀  conferences:', conferences);
     });
