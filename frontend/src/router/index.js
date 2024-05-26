@@ -9,7 +9,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/about',
@@ -30,6 +31,14 @@ const router = createRouter({
       component: LoginView
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth) && !localStorage.getItem('token')) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

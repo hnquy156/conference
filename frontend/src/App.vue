@@ -16,7 +16,7 @@ import { RouterView } from 'vue-router'
             </li>
             <li><button @click="logout">Logout</button></li>
           </div>
-          <div v-else class="others">
+          <div v-else>
             <li><RouterLink to="/signup">Sign Up</RouterLink></li>
             <li><RouterLink to="/login">Login</RouterLink></li>
           </div>
@@ -49,7 +49,7 @@ export default {
     logout() {
       localStorage.removeItem('token')
       this.isAuthenticated = false
-      this.$router.push('/')
+      this.$router.push('/login')
     },
     getEmailFromToken(token) {
       const decodedToken = jwt_decode.decode(token)

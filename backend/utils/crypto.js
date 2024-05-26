@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
 const hashPassword = (password) => {
-  return bcrypt.hashSync(password, process.env.SECRET_KEY);
+  return bcrypt.hashSync(password, 10);
 };
 
 const comparePassword = (plainPassword, hashPassword) => {
