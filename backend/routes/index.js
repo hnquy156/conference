@@ -7,5 +7,6 @@ router.get('/', (req, res) => {
   });
 });
 router.use('/conferences', require('./conference'));
+router.use('/users', require('./user'))
 
 module.exports = router;
