@@ -6,8 +6,6 @@ import { RouterView } from 'vue-router'
   <header>
     <div>
       <nav>
-        <!-- <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink> -->
         <ul>
           <li><RouterLink to="/">Home</RouterLink></li>
           <div v-if="isAuthenticated">
