@@ -21,7 +21,7 @@ const validateLogin = async (email, password, res) => {
   if (!isPasswordValid) {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
-  const token = jwt.sign({ email: email }, 'secret', {
+  const token = jwt.sign({ email: email }, process.env.SECRET_KEY, {
     expiresIn: '3h',
   });
   res.status(200).json({ token });
